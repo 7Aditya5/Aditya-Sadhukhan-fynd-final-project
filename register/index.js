@@ -5,7 +5,7 @@ const mailing=require('./mail');
 const mongoose=require('mongoose');
 const {Usermodel,Candidatemodel}=require(path.join(path.dirname(__dirname),'/model/model.js'));
 const crypto = require('crypto');
-const { resolveSoa } = require('dns');
+
 
 //console.log(path.join(path.dirname(__dirname),'/model.js'));
 
