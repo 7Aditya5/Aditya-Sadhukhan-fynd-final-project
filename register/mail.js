@@ -3,12 +3,13 @@ require( 'dotenv' ).config();
 
 const {EMAIL,EMAIL_PASSWORD}=process.env;
 
-exports.sendmail = function(voterid,password,email){
+exports.sendmail =  function(voterid,password,email){
     // sending mail here 
     
             let transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 587,
+                ignoreTLS: false,
                 secure: false, // true for 465, false for other ports
                 auth: {
                 user: EMAIL, // generated ethereal user
@@ -17,8 +18,8 @@ exports.sendmail = function(voterid,password,email){
             });
             
             // send mail with defined transport object
-            let info = transporter.sendMail({
-                from: '"noreply here" adisadhu7@gmail.com', // sender address
+            let info =  transporter.sendMail({
+                from: `"noreply here" ${EMAIL}`, // sender address
                 to: email, // list of receivers
                 subject: "From Voting Portal", // Subject line
                 text: "Below are your  voter id and password", // plain text body

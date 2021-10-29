@@ -20,7 +20,7 @@ const {NODE_ENV,DB_HOST,DB_USER,DB_PASSWORD,DB_NAME,SECRET_KEY}=process.env;
 const dburl=(NODE_ENV==='development')?`mongodb://${DB_HOST}/${DB_NAME}`:
 `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
-
+console.log(dburl);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors({
