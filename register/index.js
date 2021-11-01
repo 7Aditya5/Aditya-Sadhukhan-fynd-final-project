@@ -7,9 +7,7 @@ const {Usermodel,Candidatemodel,RegisteredCitizenmodel}=require(path.join(path.d
 const crypto = require('crypto');
 
 
-//console.log(path.join(path.dirname(__dirname),'/model.js'));
 
-//console.log(Usermodel);
 router.get('/',(req, res) => {
     //res.sendFile(__dirname + '/static/home.html');
     console.log();
@@ -46,7 +44,7 @@ router.post('/',async function(req,res,next){
                     
                     let pass=crypto.pbkdf2Sync(ans, '10',  
                       1000, 64, `sha512`).toString(`hex`); 
-                 // console.log("pass",pass);
+                 
                     mailing.sendmail(tendigitrandomnumber,ans,citizen.email);
 
                     let userdata={
@@ -60,10 +58,10 @@ router.post('/',async function(req,res,next){
                           // Insert the new user if they do not exist yet
                           user = new Usermodel(userdata);
                            user.save();
-                          //res.send(user);
+                          
                           console.log("user added");
                          res.status(200).send("use credentials sent in your registered mail to login  click here to <a href='/login'> login </a>");
-                        //res.status(200).redirect('/login');
+                       
                         }
                       }
                       else{
@@ -75,11 +73,7 @@ router.post('/',async function(req,res,next){
                 return res.status(400).send(`invalid credentials`);
               }
 
-                //res.send('ok received');
-                        // mailing.sendmail(tendigitrandomnumber,ans,req.body.email);
-                //setTimeout(res.redirect('/login'),2000);    
                 
-                //next();
                
  });
 
